@@ -1,0 +1,42 @@
+.menu {
+	// background: #aaa;
+	display: flex;
+	gap: 10px;
+	position: relative;
+	padding: 5px;
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 160%;
+	cursor: pointer;
+}
+
+.dropdown {
+	z-index: 101;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	box-shadow: 1px 1px 3px 1px #88888844;
+	font-size: 18px;
+	font-family: "Raleway", Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	// width: 100px;
+	ul {
+		display: flex;
+		flex-direction: column;
+	}
+	ul li {
+		display: flex;
+		padding: 1rem;
+	}
+	ul li:hover {
+		background-color: #eee;
+	}
+	ul li div:first-child {
+		margin-right: 10px;
+	}
+}

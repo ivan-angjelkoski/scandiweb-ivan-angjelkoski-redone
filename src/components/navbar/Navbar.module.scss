@@ -1,0 +1,32 @@
+.nav {
+	z-index: 100;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	ul {
+		display: flex;
+		list-style: none;
+
+		li a {
+			padding: 32px 16px;
+			display: inline-block;
+			font-family: "Raleway", Arial, Helvetica, sans-serif;
+			text-transform: uppercase;
+			font-weight: 400;
+			font-size: 16px;
+			border-bottom: 1px solid transparent;
+		}
+		li a.active {
+			color: #5ece7b;
+			border-bottom: 2px solid #5ece7b;
+			font-weight: 600;
+		}
+	}
+}
+
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
