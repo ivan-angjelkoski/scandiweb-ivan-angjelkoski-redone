@@ -5,6 +5,9 @@
 .attributes {
 	margin: 10px 0;
 }
+.disabledAttributes {
+	cursor: default !important;
+}
 .attribute {
 	margin-top: 10px;
 	font-family: "Source Sans Pro", sans-serif;
@@ -17,8 +20,16 @@
 	margin-right: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	user-select: none;
 }
 .selected {
 	background-color: #1d1f22;
 	color: white;
+}
+
+.cartStyles {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
 }

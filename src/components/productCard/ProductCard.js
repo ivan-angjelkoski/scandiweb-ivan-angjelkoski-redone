@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BsCart2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { withRouter } from "react-router-dom";
 import PriceFormatter from "../utilities/PriceFormatter";
 import styles from "./ProductCard.module.scss";
 

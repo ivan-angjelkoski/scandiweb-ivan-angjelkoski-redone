@@ -1,0 +1,98 @@
+.item {
+	display: flex;
+	border-bottom: 1px solid gray;
+	padding: 1rem 0;
+}
+.item:first-child {
+	border-top: 1px solid gray;
+}
+
+.body {
+	flex: 1;
+	display: flex;
+}
+
+.bodyInfo {
+	flex: 1;
+	color: #1d1f22;
+	& > h2 {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 30px;
+	}
+	& > h3 {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 30px;
+		margin-top: 10px;
+	}
+	& > h4 {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 24px;
+		margin: 10px 0;
+	}
+}
+
+.imageSection {
+	flex-basis: 200px;
+	position: relative;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: top;
+	}
+}
+.imageControls {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	display: flex;
+
+	div {
+		color: white;
+		background: rgba(0, 0, 0, 0.73);
+		width: 24px;
+		height: 24px;
+		display: grid;
+		place-items: center;
+		margin: 5px;
+		z-index: 10;
+		user-select: none;
+		cursor: pointer;
+	}
+}
+
+.cartAmountControls {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 10px;
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 24px;
+}
+.cartAmountControls > div {
+	width: 45px;
+	height: 45px;
+	border: 1px solid #1d1f22;
+	display: grid;
+	place-items: center;
+	font-size: 2rem;
+	line-height: 0;
+	font-weight: 200;
+	cursor: pointer;
+	user-select: none;
+	&:hover {
+		background-color: #eee;
+	}
+	&:active {
+		background-color: #ddd;
+	}
+}

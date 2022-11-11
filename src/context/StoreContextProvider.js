@@ -16,6 +16,8 @@ export const StoreContext = createContext({
 	updateCurrency() {},
 	addToCartWithDefault() {},
 	addToCart() {},
+	increaseAmount() {},
+	decreaseAmount() {},
 });
 
 export class StoreContextProvider extends Component {
@@ -108,7 +110,51 @@ export class StoreContextProvider extends Component {
 		}
 	};
 
-	addToCartWithDefault = () => {};
+	addToCartWithDefault = (product) => {
+		const selectedAttributes = {};
+		for (const attr of product.attributes) {
+			selectedAttributes[attr.id] = attr.items[0].id;
+		}
+		this.addToCart(product, selectedAttributes);
+	};
+
+	increaseAmount = (uuid) => {
+		this.setState((prev) => ({
+			cart: prev.cart.map((cartItem) => {
+				if (cartItem.uuid == uuid) {
+					return {
+						...cartItem,
+						amount: cartItem.amount + 1,
+					};
+				} else {
+					return cartItem;
+				}
+			}),
+		}));
+	};
+	decreaseAmount = (uuid) => {
+		const cartItem = this.state.cart.find((item) => item.uuid == uuid);
+		if (cartItem.amount - 1 == 0) {
+			console.log("Running If");
+			this.setState((prev) => ({
+				cart: prev.cart.filter((item) => item.uuid != uuid),
+			}));
+		} else {
+			console.log("Running Else");
+			this.setState((prev) => ({
+				cart: prev.cart.map((cartItem) => {
+					if (cartItem.uuid == uuid) {
+						return {
+							...cartItem,
+							amount: cartItem.amount - 1,
+						};
+					} else {
+						return cartItem;
+					}
+				}),
+			}));
+		}
+	};
 
 	render() {
 		return (
@@ -118,6 +164,8 @@ export class StoreContextProvider extends Component {
 					updateCurrency: this.updateCurrency,
 					addToCartWithDefault: this.addToCartWithDefault,
 					addToCart: this.addToCart,
+					increaseAmount: this.increaseAmount,
+					decreaseAmount: this.decreaseAmount,
 				}}
 			>
 				{this.props.children}
