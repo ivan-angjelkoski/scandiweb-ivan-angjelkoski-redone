@@ -2,6 +2,8 @@ import { Markup } from "interweave";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { apolloClient } from "..";
+import ColorAttribute from "../components/productAttributes/ColorAttribute";
+import TextAttribute from "../components/productAttributes/TextAttribute";
 import PriceFormatter from "../components/utilities/PriceFormatter";
 import { PRODUCT_QUERY } from "../gql/queries";
 import styles from "./ProductPage.module.scss";
@@ -22,7 +24,7 @@ export class ProductPage extends Component {
 			.query({
 				query: PRODUCT_QUERY,
 				variables: {
-					id: this.props.location.pathname.split("/")[2],
+					id: this.props.match.params.product,
 				},
 			})
 			.then((query) => {
@@ -73,7 +75,16 @@ export class ProductPage extends Component {
 				<div className={styles.bodySection}>
 					<h1>{brand}</h1>
 					<h2>{name}</h2>
-					<div className={styles.attributes}>{/* Attributes */}</div>
+					<div className={styles.attributes}>
+						{attributes.map((attr) => {
+							console.log(attr);
+							if (attr.type == "text") {
+								return <TextAttribute />;
+							} else if (attr.type == "swatch") {
+								return <ColorAttribute />;
+							} else return null;
+						})}
+					</div>
 					<div className={styles.price}>
 						<h3>PRICE:</h3>
 						<PriceFormatter prices={prices} />

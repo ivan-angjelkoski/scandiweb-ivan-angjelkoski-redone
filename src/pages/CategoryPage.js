@@ -18,13 +18,13 @@ export class CategoryPage extends Component {
 			.query({
 				query: CATEGORY_QUERY,
 				variables: {
-					title: this.props.location.pathname.split("/")[2],
+					title: this.props.match.params.category,
 				},
 			})
 			.then((query) => {
 				this.setState((prev) => ({
 					products: query.data.category.products,
-					category: 'this.props.location.pathname.split("/")[2]',
+					category: this.props.match.params.category,
 				}));
 			});
 	}
@@ -35,20 +35,20 @@ export class CategoryPage extends Component {
 				.query({
 					query: CATEGORY_QUERY,
 					variables: {
-						title: this.props.location.pathname.split("/")[2],
+						title: this.props.match.params.category,
 					},
 				})
 				.then((query) => {
 					this.setState((prev) => ({
 						products: query.data.category.products,
-						category: 'this.props.location.pathname.split("/")[2]',
+						category: "this.props.match.params.category",
 					}));
 				});
 		}
 	}
 
 	render() {
-		const category = this.props.location.pathname.split("/")[2];
+		const category = this.props.match.params.category;
 		return (
 			<div>
 				<div className={styles.header}>
