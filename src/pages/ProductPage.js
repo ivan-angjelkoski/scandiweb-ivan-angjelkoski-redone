@@ -15,7 +15,7 @@ export class ProductPage extends Component {
 			loading: true,
 			error: "",
 			product: null,
-			selectedAttributes: null,
+			selectedAttributes: {},
 			imgIndex: 0,
 		};
 	}
@@ -28,7 +28,14 @@ export class ProductPage extends Component {
 				},
 			})
 			.then((query) => {
-				this.setState((prev) => ({ product: query.data.product }));
+				this.setState((prev) => {
+					const selectedAttributes = {};
+
+					for (const attr of query.data.product.attributes) {
+						selectedAttributes[attr.id] = attr.items[0].value;
+					}
+					return { product: query.data.product, selectedAttributes };
+				});
 			})
 			.catch((e) => {
 				this.setState((prev) => ({ error: e }));
@@ -37,6 +44,14 @@ export class ProductPage extends Component {
 				this.setState((prev) => ({ loading: false }));
 			});
 	}
+	selectAttribute = (key, value) => {
+		this.setState((prev) => ({
+			selectedAttributes: {
+				...prev.selectedAttributes,
+				[key]: value,
+			},
+		}));
+	};
 	render() {
 		if (this.state.loading) return <h1>Loading..</h1>;
 		if (this.state.error) return <h1>Error..</h1>;
@@ -77,17 +92,30 @@ export class ProductPage extends Component {
 					<h2>{name}</h2>
 					<div className={styles.attributes}>
 						{attributes.map((attr) => {
-							console.log(attr);
 							if (attr.type == "text") {
-								return <TextAttribute />;
+								return (
+									<TextAttribute
+										attribute={attr}
+										selectAttribute={this.selectAttribute}
+										selectedAttributes={this.state.selectedAttributes}
+									/>
+								);
 							} else if (attr.type == "swatch") {
-								return <ColorAttribute />;
+								return (
+									<ColorAttribute
+										attribute={attr}
+										selectAttribute={this.selectAttribute}
+										selectedAttributes={this.state.selectedAttributes}
+									/>
+								);
 							} else return null;
 						})}
 					</div>
 					<div className={styles.price}>
 						<h3>PRICE:</h3>
-						<PriceFormatter prices={prices} />
+						<h4>
+							<PriceFormatter prices={prices} />
+						</h4>
 					</div>
 					<button className={styles.btnBlock}>ADD TO CART</button>
 					<div className={styles.description}>

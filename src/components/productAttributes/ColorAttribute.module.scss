@@ -1,0 +1,23 @@
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px 0;
+}
+.attributes {
+	margin: 10px 0;
+}
+
+.attribute {
+	width: 32px;
+	height: 32px;
+	border: 1px solid transparent;
+	padding: 2px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.selected {
+	border: 1px solid white;
+	outline: 2px solid #5ece7b;
+}

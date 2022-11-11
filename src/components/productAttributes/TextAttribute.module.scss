@@ -1,0 +1,24 @@
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+.attributes {
+	margin: 10px 0;
+}
+.attribute {
+	margin-top: 10px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18px;
+	border: 1px solid #1d1f22;
+	padding: 1rem;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.selected {
+	background-color: #1d1f22;
+	color: white;
+}
