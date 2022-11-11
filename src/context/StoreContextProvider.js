@@ -13,6 +13,8 @@ export const StoreContext = createContext({
 		tax: 21,
 	},
 	updateCurrency() {},
+	addToCartWithDefault() {},
+	addToCart() {},
 });
 
 export class StoreContextProvider extends Component {
@@ -69,6 +71,8 @@ export class StoreContextProvider extends Component {
 	updateCurrency = (currency) => {
 		this.setState((prev) => ({ currentCurrency: currency }));
 	};
+	addToCartWithDefault = () => {};
+	addToCart = () => {};
 
 	render() {
 		return (
@@ -76,6 +80,8 @@ export class StoreContextProvider extends Component {
 				value={{
 					state: this.state,
 					updateCurrency: this.updateCurrency,
+					addToCartWithDefault: this.addToCartWithDefault,
+					addToCart: this.addToCart,
 				}}
 			>
 				{this.props.children}

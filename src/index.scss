@@ -46,6 +46,12 @@ button {
 		border: 1px solid #52b76d;
 	}
 }
+button:disabled {
+	background-color: black;
+	&:hover {
+		background-color: black;
+	}
+}
 
 .btnBlock {
 	width: 100%;

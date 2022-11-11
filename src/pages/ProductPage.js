@@ -117,7 +117,12 @@ export class ProductPage extends Component {
 							<PriceFormatter prices={prices} />
 						</h4>
 					</div>
-					<button className={styles.btnBlock}>ADD TO CART</button>
+					<button
+						disabled={!inStock}
+						className={styles.btnBlock}
+					>
+						{inStock ? "ADD TO CART" : "OUT OF STOCK"}
+					</button>
 					<div className={styles.description}>
 						<Markup content={description} />
 					</div>

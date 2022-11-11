@@ -28,7 +28,9 @@ export class Navbar extends Component {
 									</li>
 								))}
 							</ul>
-							<img src='/store_logo.svg' />
+							<Link to={"/cart"}>
+								<img src='/store_logo.svg' />
+							</Link>
 							<div className={styles.menu}>
 								{!ctx.state.loading && <CurrencyMenu />}
 								<BsCart2 size={"18px"} />
