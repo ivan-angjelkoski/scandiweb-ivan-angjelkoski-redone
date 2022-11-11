@@ -1,6 +1,7 @@
 import React, { Component, createContext } from "react";
 import { apolloClient } from "..";
 import { INITIAL_QUERY } from "../gql/queries";
+import { v4 as uuid } from "uuid";
 
 export const StoreContext = createContext({
 	state: {
@@ -71,8 +72,43 @@ export class StoreContextProvider extends Component {
 	updateCurrency = (currency) => {
 		this.setState((prev) => ({ currentCurrency: currency }));
 	};
+
+	addToCart = (product, selectedAttributes) => {
+		// todo find if there is a product with the same attributes...
+		const cartProduct = this.state.cart.find((cartItem) => {
+			let isSame = true;
+			for (const key of Object.keys(cartItem.selectedAttributes)) {
+				if (selectedAttributes[key] !== cartItem.selectedAttributes[key]) {
+					isSame = false;
+				}
+			}
+			return cartItem.product.id == product.id && isSame;
+		});
+
+		if (cartProduct) {
+			this.setState((prev) => ({
+				cart: prev.cart.map((cartItem) => {
+					if (cartItem.uuid == cartProduct.uuid) {
+						return {
+							...cartItem,
+							amount: cartItem.amount + 1,
+						};
+					} else {
+						return cartItem;
+					}
+				}),
+			}));
+		} else {
+			this.setState((prev) => ({
+				cart: [
+					...prev.cart,
+					{ product, selectedAttributes, amount: 1, uuid: uuid() },
+				],
+			}));
+		}
+	};
+
 	addToCartWithDefault = () => {};
-	addToCart = () => {};
 
 	render() {
 		return (
