@@ -29,7 +29,6 @@ export class CartItem extends Component {
 	};
 	render() {
 		const { product, selectedAttributes, uuid, amount } = this.props.item;
-		console.log(this.state.imgIndex, this.props.item.product.gallery.length);
 		return (
 			<div className={styles.item}>
 				<div className={styles.body}>
@@ -43,6 +42,7 @@ export class CartItem extends Component {
 							if (attr.type == "text") {
 								return (
 									<TextAttribute
+										key={attr.id}
 										attribute={attr}
 										selectedAttributes={selectedAttributes}
 										disabled
@@ -52,6 +52,7 @@ export class CartItem extends Component {
 							if (attr.type == "swatch") {
 								return (
 									<ColorAttribute
+										key={attr.id}
 										attribute={attr}
 										selectedAttributes={selectedAttributes}
 										disabled

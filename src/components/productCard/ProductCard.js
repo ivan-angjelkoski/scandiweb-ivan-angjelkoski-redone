@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BsCart2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import { StoreContext } from "../../context/StoreContextProvider";
 import PriceFormatter from "../utilities/PriceFormatter";
 import styles from "./ProductCard.module.scss";
 
@@ -22,9 +23,19 @@ export class ProductCard extends Component {
 				</div>
 				<div className={styles.body}>
 					{inStock && (
-						<div className={styles.addToCart}>
-							<BsCart2 className={styles.cart} />
-						</div>
+						<StoreContext.Consumer>
+							{(ctx) => (
+								<div
+									className={styles.addToCart}
+									onClick={(e) => {
+										e.preventDefault();
+										ctx.addToCartWithDefault(this.props.product);
+									}}
+								>
+									<BsCart2 className={styles.cart} />
+								</div>
+							)}
+						</StoreContext.Consumer>
 					)}
 					<h3>
 						{brand} {name}

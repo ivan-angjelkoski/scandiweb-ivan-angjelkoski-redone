@@ -20,6 +20,16 @@ export const CATEGORY_QUERY = gql`
 				name
 				inStock
 				gallery
+				attributes {
+					id
+					name
+					type
+					items {
+						displayValue
+						value
+						id
+					}
+				}
 				prices {
 					currency {
 						label

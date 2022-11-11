@@ -98,6 +98,7 @@ export class ProductPage extends Component {
 									if (attr.type == "text") {
 										return (
 											<TextAttribute
+												key={attr.id}
 												attribute={attr}
 												selectAttribute={this.selectAttribute}
 												selectedAttributes={this.state.selectedAttributes}
@@ -106,6 +107,7 @@ export class ProductPage extends Component {
 									} else if (attr.type == "swatch") {
 										return (
 											<ColorAttribute
+												key={attr.id}
 												attribute={attr}
 												selectAttribute={this.selectAttribute}
 												selectedAttributes={this.state.selectedAttributes}

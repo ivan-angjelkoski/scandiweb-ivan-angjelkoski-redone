@@ -113,7 +113,8 @@ export class StoreContextProvider extends Component {
 	addToCartWithDefault = (product) => {
 		const selectedAttributes = {};
 		for (const attr of product.attributes) {
-			selectedAttributes[attr.id] = attr.items[0].id;
+			console.log(attr);
+			selectedAttributes[attr.id] = attr.items[0].value;
 		}
 		this.addToCart(product, selectedAttributes);
 	};
