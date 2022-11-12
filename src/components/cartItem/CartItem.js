@@ -29,10 +29,11 @@ export class CartItem extends Component {
 	};
 	render() {
 		const { product, selectedAttributes, uuid, amount } = this.props.item;
+		const small = this.props.small;
 		return (
-			<div className={styles.item}>
-				<div className={styles.body}>
-					<div className={styles.bodyInfo}>
+			<div className={`${styles.item} ${small && styles.itemSm}`}>
+				<div className={`${styles.body} ${small && styles.bodySm}`}>
+					<div className={`${styles.bodyInfo} ${small && styles.bodyInfoSm}`}>
 						<h2>{product.brand}</h2>
 						<h3>{product.name}</h3>
 						<h4>
@@ -46,6 +47,7 @@ export class CartItem extends Component {
 										attribute={attr}
 										selectedAttributes={selectedAttributes}
 										disabled
+										small={small}
 									/>
 								);
 							}
@@ -56,13 +58,18 @@ export class CartItem extends Component {
 										attribute={attr}
 										selectedAttributes={selectedAttributes}
 										disabled
+										small={small}
 									/>
 								);
 							}
 						})}
 					</div>
 
-					<div className={styles.cartAmountControls}>
+					<div
+						className={`${styles.cartAmountControls} ${
+							small && styles.cartAmountControlsSm
+						}`}
+					>
 						<div
 							onClick={() => {
 								this.props.ctx.increaseAmount(uuid);
@@ -80,12 +87,18 @@ export class CartItem extends Component {
 						</div>
 					</div>
 				</div>
-				<div className={styles.imageSection}>
+				<div
+					className={`${styles.imageSection} ${small && styles.imageSectionSm}`}
+				>
 					<img
 						src={product.gallery[this.state.imgIndex]}
 						alt='product image'
 					/>
-					<div className={styles.imageControls}>
+					<div
+						className={`${styles.imageControls} ${
+							small && styles.imageControlsSm
+						}`}
+					>
 						<div onClick={this.handlePrevImage}>&lt;</div>
 						<div onClick={this.handleNextImage}>&gt;</div>
 					</div>

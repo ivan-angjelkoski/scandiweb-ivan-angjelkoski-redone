@@ -12,32 +12,34 @@ class App extends Component {
 			<>
 				<Navbar />
 				<main>
-					<Switch>
-						<Route
-							path='/'
-							exact
-						>
-							<Home />
-						</Route>
-						<Route
-							path='/cart'
-							exact
-						>
-							<CartPage />
-						</Route>
-						<Route
-							path='/category/:category'
-							exact
-						>
-							<CategoryPage />
-						</Route>
-						<Route
-							path='/product/:product'
-							exact
-						>
-							<ProductPage />
-						</Route>
-					</Switch>
+					<div className='container'>
+						<Switch>
+							<Route
+								path='/'
+								exact
+							>
+								<Home />
+							</Route>
+							<Route
+								path='/cart'
+								exact
+							>
+								<CartPage />
+							</Route>
+							<Route
+								path='/category/:category'
+								exact
+							>
+								<CategoryPage />
+							</Route>
+							<Route
+								path='/product/:product'
+								exact
+							>
+								<ProductPage />
+							</Route>
+						</Switch>
+					</div>
 				</main>
 			</>
 		);

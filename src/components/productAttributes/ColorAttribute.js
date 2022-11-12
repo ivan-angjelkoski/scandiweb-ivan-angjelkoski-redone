@@ -4,13 +4,19 @@ export class ColorAttribute extends Component {
 	render() {
 		// console.log(this.props.attribute);
 		const { id, items, name, type } = this.props.attribute;
-		const size = this.props.size ?? "lg";
+		const small = this.props.small;
 		const disabled = this.props.disabled;
 		const selectAttribute = this.props.selectAttribute;
 		const selectedAttributes = this.props.selectedAttributes;
 		return (
 			<div className={styles.attributes}>
-				<h3 className={disabled ? styles.cartStyles : null}>{name}</h3>
+				<h3
+					className={`${disabled ? styles.cartStyles : null} ${
+						small && styles.smFont
+					}`}
+				>
+					{name}
+				</h3>
 				<div className={styles.flex}>
 					{items.map((attr) => (
 						<div
@@ -21,7 +27,7 @@ export class ColorAttribute extends Component {
 									  }
 									: null
 							}
-							className={`${styles.attribute} ${
+							className={`${styles.attribute} ${small && styles.attributeSm} ${
 								selectedAttributes[id] == attr.value ? styles.selected : null
 							} ${disabled ? styles.disabledAttributes : null}`}
 							style={{ backgroundColor: attr.value }}

@@ -18,6 +18,7 @@ export const StoreContext = createContext({
 	addToCart() {},
 	increaseAmount() {},
 	decreaseAmount() {},
+	getTotal() {},
 });
 
 export class StoreContextProvider extends Component {
@@ -84,13 +85,13 @@ export class StoreContextProvider extends Component {
 					isSame = false;
 				}
 			}
-			return cartItem.product.id == product.id && isSame;
+			return cartItem.product.id === product.id && isSame;
 		});
 
 		if (cartProduct) {
 			this.setState((prev) => ({
 				cart: prev.cart.map((cartItem) => {
-					if (cartItem.uuid == cartProduct.uuid) {
+					if (cartItem.uuid === cartProduct.uuid) {
 						return {
 							...cartItem,
 							amount: cartItem.amount + 1,
@@ -122,7 +123,7 @@ export class StoreContextProvider extends Component {
 	increaseAmount = (uuid) => {
 		this.setState((prev) => ({
 			cart: prev.cart.map((cartItem) => {
-				if (cartItem.uuid == uuid) {
+				if (cartItem.uuid === uuid) {
 					return {
 						...cartItem,
 						amount: cartItem.amount + 1,
@@ -134,17 +135,17 @@ export class StoreContextProvider extends Component {
 		}));
 	};
 	decreaseAmount = (uuid) => {
-		const cartItem = this.state.cart.find((item) => item.uuid == uuid);
-		if (cartItem.amount - 1 == 0) {
+		const cartItem = this.state.cart.find((item) => item.uuid === uuid);
+		if (cartItem.amount - 1 === 0) {
 			console.log("Running If");
 			this.setState((prev) => ({
-				cart: prev.cart.filter((item) => item.uuid != uuid),
+				cart: prev.cart.filter((item) => item.uuid !== uuid),
 			}));
 		} else {
 			console.log("Running Else");
 			this.setState((prev) => ({
 				cart: prev.cart.map((cartItem) => {
-					if (cartItem.uuid == uuid) {
+					if (cartItem.uuid === uuid) {
 						return {
 							...cartItem,
 							amount: cartItem.amount - 1,
@@ -156,7 +157,15 @@ export class StoreContextProvider extends Component {
 			}));
 		}
 	};
-
+	getTotal = () => {
+		const total = this.state.cart.reduce((prev, item) => {
+			const price = item.product.prices.find(
+				(price) => price.currency.label === this.state.currentCurrency.label
+			);
+			return prev + price.amount * item.amount;
+		}, 0);
+		return total;
+	};
 	render() {
 		return (
 			<StoreContext.Provider
@@ -167,6 +176,7 @@ export class StoreContextProvider extends Component {
 					addToCart: this.addToCart,
 					increaseAmount: this.increaseAmount,
 					decreaseAmount: this.decreaseAmount,
+					getTotal: this.getTotal,
 				}}
 			>
 				{this.props.children}

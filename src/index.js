@@ -17,9 +17,7 @@ root.render(
 		<StoreContextProvider>
 			<ApolloProvider client={apolloClient}>
 				<BrowserRouter>
-					<div className='container'>
-						<App />
-					</div>
+					<App />
 				</BrowserRouter>
 			</ApolloProvider>
 		</StoreContextProvider>

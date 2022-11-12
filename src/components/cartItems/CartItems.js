@@ -8,16 +8,15 @@ export class CartItems extends Component {
 		const currentCurrency = this.props.ctx.state.currentCurrency;
 		const tax = this.props.ctx.state.tax;
 		const quantity = items.reduce((prev, item) => prev + item.amount, 0);
-		const total = items.reduce((prev, item) => {
-			const price = item.product.prices.find(
-				(price) => price.currency.label == currentCurrency.label
-			);
-			return prev + price.amount * item.amount;
-		}, 0);
+		const total = this.props.ctx.getTotal();
 		const taxCalculated = total * (tax / 100);
+
 		return (
 			<>
 				<div>
+					{items.length === 0 && (
+						<h1 className={styles.noItems}>No Items In Cart...</h1>
+					)}
 					{items.map((item) => (
 						<CartItem
 							key={item.uuid}

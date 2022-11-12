@@ -22,9 +22,22 @@
 	cursor: pointer;
 	user-select: none;
 }
+.attributeSm {
+	padding: 5px;
+	margin: 5px;
+	margin-left: 0;
+}
 .selected {
 	background-color: #1d1f22;
 	color: white;
+}
+
+.smFont {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 400 !important;
+	font-size: 14px !important;
+	line-height: 16px;
 }
 
 .cartStyles {

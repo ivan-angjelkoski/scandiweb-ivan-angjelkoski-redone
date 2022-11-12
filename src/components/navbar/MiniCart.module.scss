@@ -1,0 +1,46 @@
+.miniCart {
+	padding: 32px 16px;
+	background-color: #fff;
+	color: #1d1f22;
+	min-width: 350px;
+	// border: 1px solid black;
+	h2 {
+		margin: 1rem 0;
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+
+		span {
+			font-weight: 500;
+		}
+	}
+}
+.total {
+	padding: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	h3 {
+		font-family: "Roboto";
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+	}
+	h4 {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 160%;
+	}
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	button {
+		width: 100%;
+	}
+}

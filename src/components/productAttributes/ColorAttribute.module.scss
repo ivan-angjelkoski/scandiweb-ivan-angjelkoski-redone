@@ -7,6 +7,14 @@
 	margin: 10px 0;
 }
 
+.smFont {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 400 !important;
+	font-size: 14px !important;
+	line-height: 16px;
+}
+
 .attribute {
 	width: 32px;
 	height: 32px;
@@ -15,6 +23,10 @@
 	margin-right: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+}
+.attributeSm {
+	width: 16px;
+	height: 16px;
 }
 .disabledAttributes {
 	cursor: default !important;

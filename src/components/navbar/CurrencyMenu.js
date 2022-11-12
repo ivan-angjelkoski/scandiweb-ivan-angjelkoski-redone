@@ -16,7 +16,7 @@ export class CurrencyMenu extends Component {
 
 	render() {
 		const isOpen = this.state.isOpen;
-		const size = "10px";
+		const size = "16px";
 		return (
 			<StoreContext.Consumer>
 				{(ctx) => {
@@ -25,7 +25,9 @@ export class CurrencyMenu extends Component {
 							className={styles.menu}
 							onClick={this.handleClick}
 						>
-							<div>{ctx.state.currentCurrency.symbol}</div>
+							<div style={{ fontSize: "20px" }}>
+								{ctx.state.currentCurrency.symbol}
+							</div>
 							<div>
 								{isOpen ? (
 									<FaChevronUp size={size} />
