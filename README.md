@@ -14,5 +14,5 @@ Hello, This is my redone project,where i correct my project with all the feedbac
 8. The cart is saved in local storage so it stays same after reload.
 9. The Design better matches the provided Figma Design.
 10. Attributes are not selectable in cart.
-11. Prices are displayed with 2 decimal places.( i would have used the locale javascript method,if there were valid locals provided in gql (ex: 'en-US') )
+11. Prices are displayed with 2 decimal places.(using the Intl.formatter)
 12. 3 Separate requests for every category page.
