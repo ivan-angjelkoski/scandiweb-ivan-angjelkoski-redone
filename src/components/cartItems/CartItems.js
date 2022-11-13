@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { currencyFormatter } from "../../utils/utilities";
 import CartItem from "../cartItem/CartItem";
 import styles from "./CartItems.module.scss";
 
@@ -28,15 +29,11 @@ export class CartItems extends Component {
 				<div className={styles.orderSection}>
 					<div className={styles.tableGrid}>
 						<div>Tax {tax}%:</div>
-						<div>
-							{taxCalculated.toFixed(2)} {currentCurrency.symbol}
-						</div>
+						<div>{currencyFormatter(currentCurrency.label, taxCalculated)}</div>
 						<div>Quantity:</div>
 						<div>{quantity}</div>
 						<div>Total:</div>
-						<div>
-							{total.toFixed(2)} {currentCurrency.symbol}
-						</div>
+						<div>{currencyFormatter(currentCurrency.label, total)}</div>
 					</div>
 					<button>ORDER</button>
 				</div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContextProvider";
+import { currencyFormatter } from "../../utils/utilities";
 import CartItem from "../cartItem/CartItem";
 import styles from "./MiniCart.module.scss";
 
@@ -38,7 +39,10 @@ export class MiniCart extends Component {
 						<div className={styles.total}>
 							<h3>Total:</h3>
 							<h4>
-								{ctx.getTotal().toFixed(2)} {ctx.state.currentCurrency.symbol}
+								{currencyFormatter(
+									ctx.state.currentCurrency.label,
+									ctx.getTotal()
+								)}
 							</h4>
 						</div>
 						<div className={styles.buttons}>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { StoreContext } from "../../context/StoreContextProvider";
+import { currencyFormatter } from "../../utils/utilities";
 
 export class PriceFormatter extends Component {
 	render() {
@@ -12,7 +13,11 @@ export class PriceFormatter extends Component {
 						const currency = prices.find(
 							(price) => price.currency.label == currentCurrency.label
 						);
-						return `${currency.amount.toFixed(2)} ${currency.currency.symbol}`;
+						// return `${currency.amount.toFixed(2)} ${currency.currency.symbol}`;
+						return `${currencyFormatter(
+							currentCurrency.label,
+							currency.amount
+						)}`;
 					} else {
 						return "Loading...";
 					}

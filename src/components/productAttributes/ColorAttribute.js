@@ -20,6 +20,7 @@ export class ColorAttribute extends Component {
 				<div className={styles.flex}>
 					{items.map((attr) => (
 						<div
+							key={attr.id}
 							onClick={
 								!disabled
 									? () => {
